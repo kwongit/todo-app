@@ -1,0 +1,50 @@
+* {
+  font-family: "Josefin Sans", sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+}
+
+#title {
+  display: flex;
+}
+
+.add-item-container {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+#input-item {
+  padding: 10px;
+}
+
+.list-container {
+  border: 1px solid black;
+  margin-bottom: 20px;
+}
+
+.list-items {
+  display: flex;
+  /* flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start; */
+}
+
+.drag-drop-container {
+  padding: 20px;
+}
+
+.delete-button {
+  padding: 6px;
+  margin-left: 10px;
+  background-color: red;
+}
+
+.delete-button:hover {
+  cursor: pointer;
+}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo App</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32x32.png">
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+    rel="stylesheet">
+  <style>
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+  </style>
+  <script src="../dist/index.js"></script>
+</head>
+<body>
+  <div>
+    <h1 id="title">TODO</h1>
+    <div class="add-item-container">
+      <input id="input-item" placeholder="Create a new todo...">
+    </div>
+    <div class="list-container">
+      <div class="list-items">
+        <ul id="unordered-list"></ul>
+      </div>
+      <div class="status-container">
+        <div># items left</div>
+        <div>
+          All
+          Active
+          Completed
+        </div>
+        <div>Clear Completed</div>
+      </div>
+    </div>
+    <div class="drag-drop-container">Drag and drop to reorder list</div>
+  </div>
+
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+    Coded by <a href="https://github.com/kwongit" target="_blank">kwongit</a>.
+  </div>
+</body>
+</html>
