@@ -30,9 +30,25 @@ body {
 
 .list-items {
   display: flex;
-  /* flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start; */
+}
+
+ul {
+  list-style-type: none;
+}
+
+.checkbox {
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.list-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.list-item.completed label {
+  text-decoration: line-through;
 }
 
 .drag-drop-container {

@@ -6,7 +6,16 @@ window.addEventListener("DOMContentLoaded", () => {
   function createNewListItem(text: string): HTMLLIElement {
     const newListItem = document.createElement("li");
     newListItem.className = "list-item";
-    newListItem.innerText = text;
+
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.className = "checkbox";
+    checkbox.addEventListener("change", () => {
+      updateItemsLeftCount();
+    });
+
+    const label = document.createElement("label");
+    label.innerText = text;
 
     const deleteButton = document.createElement("button");
     deleteButton.className = "delete-button";
@@ -17,7 +26,10 @@ window.addEventListener("DOMContentLoaded", () => {
       updateItemsLeftCount();
     });
 
+    newListItem.appendChild(checkbox);
+    newListItem.appendChild(label);
     newListItem.appendChild(deleteButton);
+
     return newListItem;
   }
 
@@ -55,9 +67,17 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 
   function updateItemsLeftCount(): void {
-    const listItems = list?.querySelectorAll("li");
-    const itemsLeft = listItems?.length || 0;
-    itemsLeftContainer.textContent = `${itemsLeft} item${itemsLeft !== 1 ? "s" : ""} left`
+    const listItems = list?.querySelectorAll<HTMLLIElement>("li");
+    let activeItemCount = 0;
+
+    listItems?.forEach((item) => {
+      const checkbox = item.querySelector<HTMLInputElement>(".checkbox");
+      if (checkbox && !checkbox.checked) {
+        activeItemCount++;
+      }
+    });
+
+    itemsLeftContainer.textContent = `${activeItemCount} item${activeItemCount !== 1 ? "s" : ""} left`
   }
 
   updateItemsLeftCount();
