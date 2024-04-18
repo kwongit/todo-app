@@ -1,6 +1,7 @@
 window.addEventListener("DOMContentLoaded", () => {
   const list = document.querySelector<HTMLOListElement>("#unordered-list");
   const inputField = document.querySelector<HTMLInputElement>("#input-item")!;
+  const itemsLeftContainer = document.querySelector<HTMLElement>("#items-left")!;
 
   function createNewListItem(text: string): HTMLLIElement {
     const newListItem = document.createElement("li");
@@ -13,6 +14,7 @@ window.addEventListener("DOMContentLoaded", () => {
     deleteButton.addEventListener("click", () => {
       const item = deleteButton.parentElement!;
       list?.removeChild(item);
+      updateItemsLeftCount();
     });
 
     newListItem.appendChild(deleteButton);
@@ -22,6 +24,7 @@ window.addEventListener("DOMContentLoaded", () => {
   function addListItem(text: string): void {
     const newListItem = createNewListItem(text);
     list?.appendChild(newListItem);
+    updateItemsLeftCount();
   }
 
   function clearInputField(): void {
@@ -50,4 +53,12 @@ window.addEventListener("DOMContentLoaded", () => {
       handleInputSubmission();
     }
   });
+
+  function updateItemsLeftCount(): void {
+    const listItems = list?.querySelectorAll("li");
+    const itemsLeft = listItems?.length || 0;
+    itemsLeftContainer.textContent = `${itemsLeft} item${itemsLeft !== 1 ? "s" : ""} left`
+  }
+
+  updateItemsLeftCount();
 });

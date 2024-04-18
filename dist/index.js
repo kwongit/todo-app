@@ -2,6 +2,7 @@
 window.addEventListener("DOMContentLoaded", () => {
     const list = document.querySelector("#unordered-list");
     const inputField = document.querySelector("#input-item");
+    const itemsLeftContainer = document.querySelector("#items-left");
     function createNewListItem(text) {
         const newListItem = document.createElement("li");
         newListItem.className = "list-item";
@@ -12,6 +13,7 @@ window.addEventListener("DOMContentLoaded", () => {
         deleteButton.addEventListener("click", () => {
             const item = deleteButton.parentElement;
             list === null || list === void 0 ? void 0 : list.removeChild(item);
+            updateItemsLeftCount();
         });
         newListItem.appendChild(deleteButton);
         return newListItem;
@@ -19,6 +21,7 @@ window.addEventListener("DOMContentLoaded", () => {
     function addListItem(text) {
         const newListItem = createNewListItem(text);
         list === null || list === void 0 ? void 0 : list.appendChild(newListItem);
+        updateItemsLeftCount();
     }
     function clearInputField() {
         inputField.value = "";
@@ -44,4 +47,10 @@ window.addEventListener("DOMContentLoaded", () => {
             handleInputSubmission();
         }
     });
+    function updateItemsLeftCount() {
+        const listItems = list === null || list === void 0 ? void 0 : list.querySelectorAll("li");
+        const itemsLeft = (listItems === null || listItems === void 0 ? void 0 : listItems.length) || 0;
+        itemsLeftContainer.textContent = `${itemsLeft} item${itemsLeft !== 1 ? "s" : ""} left`;
+    }
+    updateItemsLeftCount();
 });
