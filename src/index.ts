@@ -2,6 +2,10 @@ window.addEventListener("DOMContentLoaded", () => {
   const list = document.querySelector<HTMLOListElement>("#unordered-list");
   const inputField = document.querySelector<HTMLInputElement>("#input-item")!;
   const itemsLeftContainer = document.querySelector<HTMLElement>("#items-left")!;
+  const allFilter = document.querySelector<HTMLElement>("#all")!;
+  const activeFilter = document.querySelector<HTMLElement>("#active")!;
+  const completedFilter = document.querySelector<HTMLElement>("#completed")!;
+  const clearCompletedFilter = document.querySelector<HTMLElement>("#clear-completed")!;
 
   function createNewListItem(text: string): HTMLLIElement {
     const newListItem = document.createElement("li");
@@ -94,4 +98,46 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 
   updateItemsLeftCount();
+
+  activeFilter.addEventListener("click", (e: MouseEvent) => {
+    const listItems = list?.querySelectorAll<HTMLLIElement>("li");
+
+    listItems?.forEach((item) => {
+      const checkbox = item.querySelector<HTMLInputElement>(".checkbox");
+      if (checkbox && checkbox.checked) {
+        item.style.display = "none";
+      }
+    });
+  });
+
+  completedFilter.addEventListener("click", (e: MouseEvent) => {
+    const listItems = list?.querySelectorAll<HTMLLIElement>("li");
+
+    listItems?.forEach((item) => {
+      const checkbox = item.querySelector<HTMLInputElement>(".checkbox");
+      if (checkbox && !checkbox.checked) {
+        item.style.display = "none";
+      }
+    });
+  });
+
+  allFilter.addEventListener("click", (e: MouseEvent) => {
+    const listItems = list?.querySelectorAll<HTMLLIElement>("li");
+
+    listItems?.forEach((item) => {
+      item.style.display = "block";
+    });
+  });
+
+  clearCompletedFilter.addEventListener("click", (e: MouseEvent) => {
+    const listItems = list?.querySelectorAll<HTMLLIElement>("li");
+
+    listItems?.forEach((item) => {
+      const checkbox = item.querySelector<HTMLInputElement>(".checkbox");
+      if (checkbox && checkbox.checked) {
+        list?.removeChild(item);
+        updateItemsLeftCount();
+      }
+    });
+  });
 });

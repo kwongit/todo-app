@@ -3,6 +3,10 @@ window.addEventListener("DOMContentLoaded", () => {
     const list = document.querySelector("#unordered-list");
     const inputField = document.querySelector("#input-item");
     const itemsLeftContainer = document.querySelector("#items-left");
+    const allFilter = document.querySelector("#all");
+    const activeFilter = document.querySelector("#active");
+    const completedFilter = document.querySelector("#completed");
+    const clearCompletedFilter = document.querySelector("#clear-completed");
     function createNewListItem(text) {
         const newListItem = document.createElement("li");
         newListItem.className = "list-item";
@@ -78,4 +82,38 @@ window.addEventListener("DOMContentLoaded", () => {
         itemsLeftContainer.innerText = `${activeItemCount} item${activeItemCount !== 1 ? "s" : ""} left`;
     }
     updateItemsLeftCount();
+    activeFilter.addEventListener("click", (e) => {
+        const listItems = list === null || list === void 0 ? void 0 : list.querySelectorAll("li");
+        listItems === null || listItems === void 0 ? void 0 : listItems.forEach((item) => {
+            const checkbox = item.querySelector(".checkbox");
+            if (checkbox && checkbox.checked) {
+                item.style.display = "none";
+            }
+        });
+    });
+    completedFilter.addEventListener("click", (e) => {
+        const listItems = list === null || list === void 0 ? void 0 : list.querySelectorAll("li");
+        listItems === null || listItems === void 0 ? void 0 : listItems.forEach((item) => {
+            const checkbox = item.querySelector(".checkbox");
+            if (checkbox && !checkbox.checked) {
+                item.style.display = "none";
+            }
+        });
+    });
+    allFilter.addEventListener("click", (e) => {
+        const listItems = list === null || list === void 0 ? void 0 : list.querySelectorAll("li");
+        listItems === null || listItems === void 0 ? void 0 : listItems.forEach((item) => {
+            item.style.display = "block";
+        });
+    });
+    clearCompletedFilter.addEventListener("click", (e) => {
+        const listItems = list === null || list === void 0 ? void 0 : list.querySelectorAll("li");
+        listItems === null || listItems === void 0 ? void 0 : listItems.forEach((item) => {
+            const checkbox = item.querySelector(".checkbox");
+            if (checkbox && checkbox.checked) {
+                list === null || list === void 0 ? void 0 : list.removeChild(item);
+                updateItemsLeftCount();
+            }
+        });
+    });
 });
