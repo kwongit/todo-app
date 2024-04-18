@@ -9,7 +9,10 @@ window.addEventListener("DOMContentLoaded", () => {
         const checkbox = document.createElement("input");
         checkbox.type = "checkbox";
         checkbox.className = "checkbox";
-        checkbox.addEventListener("change", () => {
+        checkbox.addEventListener("change", (e) => {
+            const target = e.target;
+            const listItem = target.closest("li");
+            listItem === null || listItem === void 0 ? void 0 : listItem.classList.toggle("completed", target.checked);
             updateItemsLeftCount();
         });
         const label = document.createElement("label");
@@ -65,7 +68,7 @@ window.addEventListener("DOMContentLoaded", () => {
                 activeItemCount++;
             }
         });
-        itemsLeftContainer.textContent = `${activeItemCount} item${activeItemCount !== 1 ? "s" : ""} left`;
+        itemsLeftContainer.innerText = `${activeItemCount} item${activeItemCount !== 1 ? "s" : ""} left`;
     }
     updateItemsLeftCount();
 });

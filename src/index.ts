@@ -10,7 +10,10 @@ window.addEventListener("DOMContentLoaded", () => {
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
     checkbox.className = "checkbox";
-    checkbox.addEventListener("change", () => {
+    checkbox.addEventListener("change", (e) => {
+      const target = e.target as HTMLInputElement;
+      const listItem = target.closest("li");
+      listItem?.classList.toggle("completed", target.checked);
       updateItemsLeftCount();
     });
 
@@ -77,7 +80,7 @@ window.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-    itemsLeftContainer.textContent = `${activeItemCount} item${activeItemCount !== 1 ? "s" : ""} left`
+    itemsLeftContainer.innerText = `${activeItemCount} item${activeItemCount !== 1 ? "s" : ""} left`
   }
 
   updateItemsLeftCount();

@@ -49,6 +49,7 @@ ul {
 
 .list-item.completed label {
   text-decoration: line-through;
+  opacity: 0.5;
 }
 
 .drag-drop-container {
