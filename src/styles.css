@@ -45,6 +45,8 @@ ul {
   display: flex;
   align-items: center;
   margin-bottom: 10px;
+  position: relative;
+  min-width: 200px;
 }
 
 .list-item.completed label {
@@ -60,8 +62,13 @@ ul {
   padding: 6px;
   margin-left: 10px;
   background-color: red;
+  color: white;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  left: 150px;
 }
 
-.delete-button:hover {
-  cursor: pointer;
+.list-item:hover .delete-button {
+  display: inline-block;
 }

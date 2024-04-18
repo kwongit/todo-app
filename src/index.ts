@@ -23,6 +23,16 @@ window.addEventListener("DOMContentLoaded", () => {
     const deleteButton = document.createElement("button");
     deleteButton.className = "delete-button";
     deleteButton.innerText = "Delete";
+    deleteButton.style.display = "none";
+
+    newListItem.addEventListener("mouseenter", () => {
+      deleteButton.style.display = "inline-block";
+    });
+
+    newListItem.addEventListener("mouseleave", () => {
+      deleteButton.style.display = "none";
+    });
+
     deleteButton.addEventListener("click", () => {
       const item = deleteButton.parentElement!;
       list?.removeChild(item);
