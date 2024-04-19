@@ -76,3 +76,7 @@ ul {
 #all, #active, #completed, #clear-completed {
   cursor: pointer;
 }
+
+.blue-text {
+  color: slateblue;
+}

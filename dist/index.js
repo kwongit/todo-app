@@ -7,6 +7,7 @@ window.addEventListener("DOMContentLoaded", () => {
     const activeFilter = document.querySelector("#active");
     const completedFilter = document.querySelector("#completed");
     const clearCompletedFilter = document.querySelector("#clear-completed");
+    const blueTextColorClass = "blue-text";
     function createNewListItem(text) {
         const newListItem = document.createElement("li");
         newListItem.className = "list-item";
@@ -82,7 +83,14 @@ window.addEventListener("DOMContentLoaded", () => {
         itemsLeftContainer.innerText = `${activeItemCount} item${activeItemCount !== 1 ? "s" : ""} left`;
     }
     updateItemsLeftCount();
+    function removeBlueTextColorFromFilters() {
+        allFilter.classList.remove(blueTextColorClass);
+        activeFilter.classList.remove(blueTextColorClass);
+        completedFilter.classList.remove(blueTextColorClass);
+    }
     activeFilter.addEventListener("click", (e) => {
+        removeBlueTextColorFromFilters();
+        activeFilter.classList.add(blueTextColorClass);
         const listItems = list === null || list === void 0 ? void 0 : list.querySelectorAll("li");
         listItems === null || listItems === void 0 ? void 0 : listItems.forEach((item) => {
             const checkbox = item.querySelector(".checkbox");
@@ -95,6 +103,8 @@ window.addEventListener("DOMContentLoaded", () => {
         });
     });
     completedFilter.addEventListener("click", (e) => {
+        removeBlueTextColorFromFilters();
+        completedFilter.classList.add(blueTextColorClass);
         const listItems = list === null || list === void 0 ? void 0 : list.querySelectorAll("li");
         listItems === null || listItems === void 0 ? void 0 : listItems.forEach((item) => {
             const checkbox = item.querySelector(".checkbox");
@@ -107,12 +117,15 @@ window.addEventListener("DOMContentLoaded", () => {
         });
     });
     allFilter.addEventListener("click", (e) => {
+        removeBlueTextColorFromFilters();
+        allFilter.classList.add(blueTextColorClass);
         const listItems = list === null || list === void 0 ? void 0 : list.querySelectorAll("li");
         listItems === null || listItems === void 0 ? void 0 : listItems.forEach((item) => {
             item.style.display = "block";
         });
     });
     clearCompletedFilter.addEventListener("click", (e) => {
+        removeBlueTextColorFromFilters();
         const listItems = list === null || list === void 0 ? void 0 : list.querySelectorAll("li");
         listItems === null || listItems === void 0 ? void 0 : listItems.forEach((item) => {
             const checkbox = item.querySelector(".checkbox");

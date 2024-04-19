@@ -7,6 +7,8 @@ window.addEventListener("DOMContentLoaded", () => {
   const completedFilter = document.querySelector<HTMLElement>("#completed")!;
   const clearCompletedFilter = document.querySelector<HTMLElement>("#clear-completed")!;
 
+  const blueTextColorClass = "blue-text";
+
   function createNewListItem(text: string): HTMLLIElement {
     const newListItem = document.createElement("li");
     newListItem.className = "list-item";
@@ -99,7 +101,16 @@ window.addEventListener("DOMContentLoaded", () => {
 
   updateItemsLeftCount();
 
+  function removeBlueTextColorFromFilters(): void {
+    allFilter.classList.remove(blueTextColorClass);
+    activeFilter.classList.remove(blueTextColorClass);
+    completedFilter.classList.remove(blueTextColorClass);
+  }
+
   activeFilter.addEventListener("click", (e: MouseEvent) => {
+    removeBlueTextColorFromFilters();
+    activeFilter.classList.add(blueTextColorClass);
+
     const listItems = list?.querySelectorAll<HTMLLIElement>("li");
 
     listItems?.forEach((item) => {
@@ -113,6 +124,9 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 
   completedFilter.addEventListener("click", (e: MouseEvent) => {
+    removeBlueTextColorFromFilters();
+    completedFilter.classList.add(blueTextColorClass);
+
     const listItems = list?.querySelectorAll<HTMLLIElement>("li");
 
     listItems?.forEach((item) => {
@@ -126,6 +140,9 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 
   allFilter.addEventListener("click", (e: MouseEvent) => {
+    removeBlueTextColorFromFilters();
+    allFilter.classList.add(blueTextColorClass);
+
     const listItems = list?.querySelectorAll<HTMLLIElement>("li");
 
     listItems?.forEach((item) => {
@@ -134,6 +151,8 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 
   clearCompletedFilter.addEventListener("click", (e: MouseEvent) => {
+    removeBlueTextColorFromFilters();
+
     const listItems = list?.querySelectorAll<HTMLLIElement>("li");
 
     listItems?.forEach((item) => {
