@@ -21,12 +21,16 @@ body {
 
 #input-item {
   padding: 10px;
+  width: 100%;
+  padding-left: 20px;
+  background-color: transparent;
+  border: 1px solid gray;
 }
 
 .list-container {
   border: 1px solid black;
   margin-bottom: 20px;
-  width: 600px;
+  width: 500px;
 }
 
 .list-items {
@@ -35,6 +39,8 @@ body {
 
 ul {
   list-style-type: none;
+  padding-left: 0px;
+  margin: 0px;
 }
 
 .checkbox {
@@ -45,9 +51,10 @@ ul {
 .list-item {
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
   position: relative;
-  min-width: 200px;
+  min-width: 470px;
+  border-bottom: 1px solid gray;
+  padding: 15px;
 }
 
 .list-item.completed label {
@@ -56,7 +63,13 @@ ul {
 }
 
 .drag-drop-container {
+  display: flex;
+  justify-content: center;
   padding: 20px;
+}
+
+#drag-drop {
+  font-size: 14px;
 }
 
 .delete-button {
@@ -67,7 +80,7 @@ ul {
   border: none;
   cursor: pointer;
   position: absolute;
-  left: 150px;
+  left: 420px;
 }
 
 .list-item:hover .delete-button {
@@ -77,6 +90,8 @@ ul {
 .status-container {
   display: flex;
   justify-content: space-around;
+  font-size: 14px;
+  margin: 15px 0px;
 }
 
 #all-active-completed-container {
@@ -84,10 +99,6 @@ ul {
   /* justify-content: space-evenly; */
   gap: 20px;
 }
-
-/* #all, #active, #completed, #clear-completed {
-  cursor: pointer;
-} */
 
 #all:hover, #active:hover, #completed:hover, #clear-completed:hover {
   cursor: pointer;
