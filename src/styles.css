@@ -10,10 +10,18 @@ body {
   font-size: 18px;
 }
 
+#desktop-banner {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
 .header-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
+  top: 100px;
 }
 
 #title {
@@ -24,30 +32,38 @@ body {
 .add-item-container {
   display: flex;
   margin-bottom: 20px;
+  position: relative;
+  top: 100px;
 }
 
 #input-item {
-  padding: 10px;
+  padding: 15px;
   width: 100%;
   padding-left: 20px;
-  background-color: transparent;
-  border: 1px solid gray;
+  border: 1px solid hsl(235, 19%, 35%);
+  position: relative;
+  background-color: hsl(237, 14%, 26%);
 }
 
 .list-container {
-  border: 1px solid black;
+  border: 1px solid hsl(235, 19%, 35%);
   margin-bottom: 20px;
   width: 500px;
+  position: relative;
+  top: 100px;
+  background-color: hsl(237, 14%, 26%);
 }
 
 .list-items {
   display: flex;
+  position: relative;
 }
 
 ul {
   list-style-type: none;
   padding-left: 0px;
   margin: 0px;
+  position: relative;
 }
 
 .checkbox {
@@ -60,8 +76,9 @@ ul {
   align-items: center;
   position: relative;
   min-width: 470px;
-  border-bottom: 1px solid gray;
+  border-bottom: 1px solid hsl(235, 19%, 35%);
   padding: 15px;
+  position: relative;
 }
 
 .list-item.completed label {
@@ -73,6 +90,8 @@ ul {
   display: flex;
   justify-content: center;
   padding: 20px;
+  position: relative;
+  top: 100px;
 }
 
 #drag-drop {
@@ -113,4 +132,13 @@ ul {
 
 .blue-text {
   color: slateblue;
+}
+
+.attribution {
+  position: relative;
+  top: 100px;
+}
+
+#light-mode-toggle {
+  cursor: pointer;
 }

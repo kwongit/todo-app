@@ -6,6 +6,7 @@ window.addEventListener("DOMContentLoaded", () => {
   const activeFilter = document.querySelector<HTMLElement>("#active")!;
   const completedFilter = document.querySelector<HTMLElement>("#completed")!;
   const clearCompletedFilter = document.querySelector<HTMLElement>("#clear-completed")!;
+  const lightModeToggle = document.querySelector<HTMLImageElement>("#light-mode-toggle")!;
 
   const blueTextColorClass = "blue-text";
 
@@ -162,5 +163,21 @@ window.addEventListener("DOMContentLoaded", () => {
         updateItemsLeftCount();
       }
     });
+  });
+
+  lightModeToggle.addEventListener("click", () => {
+    const desktopBanner = document.querySelector<HTMLImageElement>("#desktop-banner");
+
+    if (desktopBanner) {
+      const currentSrc = desktopBanner.getAttribute("src");
+      const lightModeImageSrc = "../images/bg-desktop-light.jpg";
+      const darkModeImageSrc = "../images/bg-desktop-dark.jpg";
+
+      if (currentSrc === darkModeImageSrc) {
+        desktopBanner.setAttribute("src", lightModeImageSrc);
+      } else {
+        desktopBanner.setAttribute("src", darkModeImageSrc);
+      }
+    }
   });
 });
