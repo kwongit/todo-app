@@ -10,8 +10,15 @@ body {
   font-size: 18px;
 }
 
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 #title {
   display: flex;
+  letter-spacing: 10px;
 }
 
 .add-item-container {
@@ -73,14 +80,14 @@ ul {
 }
 
 .delete-button {
-  padding: 6px;
-  margin-left: 10px;
-  background-color: red;
-  color: white;
+  padding: 9px;
   border: none;
+  border-radius: 50%;
   cursor: pointer;
   position: absolute;
-  left: 420px;
+  left: 450px;
+  background-color: transparent;
+  color: gray;
 }
 
 .list-item:hover .delete-button {
@@ -96,7 +103,6 @@ ul {
 
 #all-active-completed-container {
   display: flex;
-  /* justify-content: space-evenly; */
   gap: 20px;
 }
 

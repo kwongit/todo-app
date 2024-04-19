@@ -28,7 +28,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     const deleteButton = document.createElement("button");
     deleteButton.className = "delete-button";
-    deleteButton.innerText = "Delete";
+    deleteButton.style.backgroundImage = 'url("../images/icon-cross.svg")';
     deleteButton.style.display = "none";
 
     newListItem.addEventListener("mouseenter", () => {
