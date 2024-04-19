@@ -86,7 +86,10 @@ window.addEventListener("DOMContentLoaded", () => {
         const listItems = list === null || list === void 0 ? void 0 : list.querySelectorAll("li");
         listItems === null || listItems === void 0 ? void 0 : listItems.forEach((item) => {
             const checkbox = item.querySelector(".checkbox");
-            if (checkbox && checkbox.checked) {
+            if (checkbox && !checkbox.checked) {
+                item.style.display = "block";
+            }
+            else {
                 item.style.display = "none";
             }
         });
@@ -95,7 +98,10 @@ window.addEventListener("DOMContentLoaded", () => {
         const listItems = list === null || list === void 0 ? void 0 : list.querySelectorAll("li");
         listItems === null || listItems === void 0 ? void 0 : listItems.forEach((item) => {
             const checkbox = item.querySelector(".checkbox");
-            if (checkbox && !checkbox.checked) {
+            if (checkbox && checkbox.checked) {
+                item.style.display = "block";
+            }
+            else {
                 item.style.display = "none";
             }
         });

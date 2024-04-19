@@ -104,7 +104,9 @@ window.addEventListener("DOMContentLoaded", () => {
 
     listItems?.forEach((item) => {
       const checkbox = item.querySelector<HTMLInputElement>(".checkbox");
-      if (checkbox && checkbox.checked) {
+      if (checkbox && !checkbox.checked) {
+        item.style.display = "block";
+      } else {
         item.style.display = "none";
       }
     });
@@ -115,7 +117,9 @@ window.addEventListener("DOMContentLoaded", () => {
 
     listItems?.forEach((item) => {
       const checkbox = item.querySelector<HTMLInputElement>(".checkbox");
-      if (checkbox && !checkbox.checked) {
+      if (checkbox && checkbox.checked) {
+        item.style.display = "block";
+      } else {
         item.style.display = "none";
       }
     });
