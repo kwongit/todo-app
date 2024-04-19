@@ -7,6 +7,7 @@ window.addEventListener("DOMContentLoaded", () => {
     const activeFilter = document.querySelector("#active");
     const completedFilter = document.querySelector("#completed");
     const clearCompletedFilter = document.querySelector("#clear-completed");
+    const lightModeToggle = document.querySelector("#light-mode-toggle");
     const blueTextColorClass = "blue-text";
     function createNewListItem(text) {
         const newListItem = document.createElement("li");
@@ -134,5 +135,21 @@ window.addEventListener("DOMContentLoaded", () => {
                 updateItemsLeftCount();
             }
         });
+    });
+    lightModeToggle === null || lightModeToggle === void 0 ? void 0 : lightModeToggle.addEventListener("click", () => {
+        const desktopBanner = document.querySelector("#desktop-banner");
+        if (desktopBanner) {
+            const currentSrc = desktopBanner.getAttribute("src");
+            const lightModeImageSrc = "../images/bg-desktop-light.jpg";
+            const darkModeImageSrc = "../images/bg-desktop-dark.jpg";
+            if (currentSrc === darkModeImageSrc) {
+                desktopBanner.setAttribute("src", lightModeImageSrc);
+                lightModeToggle.setAttribute("src", "../images/icon-sun.svg");
+            }
+            else {
+                desktopBanner.setAttribute("src", darkModeImageSrc);
+                lightModeToggle.setAttribute("src", "../images/icon-moon.svg");
+            }
+        }
     });
 });

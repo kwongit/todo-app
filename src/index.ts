@@ -6,7 +6,7 @@ window.addEventListener("DOMContentLoaded", () => {
   const activeFilter = document.querySelector<HTMLElement>("#active")!;
   const completedFilter = document.querySelector<HTMLElement>("#completed")!;
   const clearCompletedFilter = document.querySelector<HTMLElement>("#clear-completed")!;
-  const lightModeToggle = document.querySelector<HTMLImageElement>("#light-mode-toggle")!;
+  const lightModeToggle = document.querySelector<HTMLElement>("#light-mode-toggle");
 
   const blueTextColorClass = "blue-text";
 
@@ -165,7 +165,7 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  lightModeToggle.addEventListener("click", () => {
+  lightModeToggle?.addEventListener("click", () => {
     const desktopBanner = document.querySelector<HTMLImageElement>("#desktop-banner");
 
     if (desktopBanner) {
@@ -175,8 +175,10 @@ window.addEventListener("DOMContentLoaded", () => {
 
       if (currentSrc === darkModeImageSrc) {
         desktopBanner.setAttribute("src", lightModeImageSrc);
+        lightModeToggle.setAttribute("src", "../images/icon-sun.svg");
       } else {
         desktopBanner.setAttribute("src", darkModeImageSrc);
+        lightModeToggle.setAttribute("src", "../images/icon-moon.svg");
       }
     }
   });
