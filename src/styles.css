@@ -26,6 +26,7 @@ body {
 .list-container {
   border: 1px solid black;
   margin-bottom: 20px;
+  width: 600px;
 }
 
 .list-items {
@@ -73,8 +74,24 @@ ul {
   display: inline-block;
 }
 
-#all, #active, #completed, #clear-completed {
+.status-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+#all-active-completed-container {
+  display: flex;
+  /* justify-content: space-evenly; */
+  gap: 20px;
+}
+
+/* #all, #active, #completed, #clear-completed {
   cursor: pointer;
+} */
+
+#all:hover, #active:hover, #completed:hover, #clear-completed:hover {
+  cursor: pointer;
+  color: slateblue;
 }
 
 .blue-text {
