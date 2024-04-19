@@ -144,11 +144,11 @@ window.addEventListener("DOMContentLoaded", () => {
             const darkModeImageSrc = "../images/bg-desktop-dark.jpg";
             if (currentSrc === darkModeImageSrc) {
                 desktopBanner.setAttribute("src", lightModeImageSrc);
-                lightModeToggle.setAttribute("src", "../images/icon-sun.svg");
+                lightModeToggle.setAttribute("src", "../images/icon-moon.svg");
             }
             else {
                 desktopBanner.setAttribute("src", darkModeImageSrc);
-                lightModeToggle.setAttribute("src", "../images/icon-moon.svg");
+                lightModeToggle.setAttribute("src", "../images/icon-sun.svg");
             }
         }
     });
