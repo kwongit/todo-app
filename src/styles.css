@@ -1,6 +1,5 @@
 * {
   font-family: "Josefin Sans", sans-serif;
-  /* color: white; */
 }
 
 body {
@@ -49,6 +48,7 @@ body {
   color: white;
   outline: none;
   font-size: 16px;
+  border-radius: 5px;
 }
 
 .list-container {
@@ -58,12 +58,14 @@ body {
   position: relative;
   top: 100px;
   background-color: hsl(235, 24%, 19%);
+  border-radius: 5px;
 }
 
 .list-items {
   display: flex;
   position: relative;
   color: white;
+  border-radius: 5px;
 }
 
 ul {
@@ -71,6 +73,7 @@ ul {
   padding-left: 0px;
   margin: 0px;
   position: relative;
+  border-radius: 5px;
 }
 
 .checkbox {
@@ -84,7 +87,7 @@ ul {
   display: flex;
   align-items: center;
   position: relative;
-  min-width: 470px;
+  width: 470px;
   border-bottom: 1px solid hsl(235, 19%, 35%);
   padding: 15px;
   position: relative;
@@ -127,9 +130,9 @@ ul {
   display: flex;
   justify-content: space-around;
   font-size: 14px;
-  /* margin: 15px 0px; */
   padding: 15px 0px;
   color: hsl(235, 19%, 35%);
+  border-radius: 5px;
 }
 
 #all-active-completed-container {
@@ -159,4 +162,50 @@ ul {
 .light-mode {
   background-color: white;
   color: hsl(236, 9%, 61%);
+}
+
+@media screen and (max-width: 525px) {
+  .header-container {
+    top: 10px;
+  }
+
+  .add-item-container {
+    top: 10px;
+  }
+
+  .input-item {
+    width: 100%;
+  }
+
+  .list-container {
+    width: 100%;
+    top: 10px;
+  }
+
+  .list-items {
+    width: 100%;
+  }
+
+  ul {
+    width: 100%;
+  }
+
+  .list-item {
+    width: 85%;
+  }
+
+  .delete-button {
+    left: 85%;
+  }
+
+  .status-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .attribution {
+    top: 10px;
+  }
 }
