@@ -1,6 +1,7 @@
 window.addEventListener("DOMContentLoaded", () => {
   const list = document.querySelector<HTMLOListElement>("#unordered-list");
-  const inputField = document.querySelector<HTMLInputElement>("#input-item")!;
+  const inputField = document.querySelector<HTMLInputElement>(".input-item")!;
+  const statusContainer = document.querySelector<HTMLElement>(".status-container")!;
   const itemsLeftContainer = document.querySelector<HTMLElement>("#items-left")!;
   const allFilter = document.querySelector<HTMLElement>("#all")!;
   const activeFilter = document.querySelector<HTMLElement>("#active")!;
@@ -182,6 +183,16 @@ window.addEventListener("DOMContentLoaded", () => {
         // Remove dark mode class and add light mode class to body
         body.classList.remove("dark-mode");
         body.classList.add("light-mode");
+
+        // Update background colors for specific elements
+        list?.classList.remove("dark-mode");
+        list?.classList.add("light-mode");
+
+        inputField.classList.remove("dark-mode");
+        inputField.classList.add("light-mode");
+
+        statusContainer.classList.remove("dark-mode");
+        statusContainer.classList.add("light-mode");
       } else {
         // switch to dark mode
         desktopBanner.setAttribute("src", darkModeImageSrc);
@@ -189,7 +200,11 @@ window.addEventListener("DOMContentLoaded", () => {
 
         // Remove light mode class and add dark mode class to body
         body.classList.remove("light-mode");
-        body.classList.add("dark-mode");
+
+        // Update background colors for specific elements
+        list?.classList.remove("light-mode");
+        inputField.classList.remove("light-mode");
+        statusContainer.classList.remove("light-mode");
       }
     }
   });

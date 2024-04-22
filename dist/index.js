@@ -1,7 +1,8 @@
 "use strict";
 window.addEventListener("DOMContentLoaded", () => {
     const list = document.querySelector("#unordered-list");
-    const inputField = document.querySelector("#input-item");
+    const inputField = document.querySelector(".input-item");
+    const statusContainer = document.querySelector(".status-container");
     const itemsLeftContainer = document.querySelector("#items-left");
     const allFilter = document.querySelector("#all");
     const activeFilter = document.querySelector("#active");
@@ -148,12 +149,20 @@ window.addEventListener("DOMContentLoaded", () => {
                 lightModeToggle.setAttribute("src", "../images/icon-moon.svg");
                 body.classList.remove("dark-mode");
                 body.classList.add("light-mode");
+                list === null || list === void 0 ? void 0 : list.classList.remove("dark-mode");
+                list === null || list === void 0 ? void 0 : list.classList.add("light-mode");
+                inputField.classList.remove("dark-mode");
+                inputField.classList.add("light-mode");
+                statusContainer.classList.remove("dark-mode");
+                statusContainer.classList.add("light-mode");
             }
             else {
                 desktopBanner.setAttribute("src", darkModeImageSrc);
                 lightModeToggle.setAttribute("src", "../images/icon-sun.svg");
                 body.classList.remove("light-mode");
-                body.classList.add("dark-mode");
+                list === null || list === void 0 ? void 0 : list.classList.remove("light-mode");
+                inputField.classList.remove("light-mode");
+                statusContainer.classList.remove("light-mode");
             }
         }
     });
