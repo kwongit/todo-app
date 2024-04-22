@@ -8,6 +8,7 @@ body {
   justify-content: center;
   align-items: center;
   font-size: 18px;
+  background-color: hsl(235, 21%, 11%);
 }
 
 #desktop-banner {
@@ -27,6 +28,7 @@ body {
 #title {
   display: flex;
   letter-spacing: 10px;
+  color: white;
 }
 
 .add-item-container {
@@ -42,7 +44,10 @@ body {
   padding-left: 20px;
   border: 1px solid hsl(235, 19%, 35%);
   position: relative;
-  background-color: hsl(237, 14%, 26%);
+  background-color: hsl(235, 24%, 19%);
+  color: white;
+  outline: none;
+  font-size: 16px;
 }
 
 .list-container {
@@ -51,7 +56,8 @@ body {
   width: 500px;
   position: relative;
   top: 100px;
-  background-color: hsl(237, 14%, 26%);
+  background-color: hsl(235, 24%, 19%);
+  color: white;
 }
 
 .list-items {
@@ -69,6 +75,8 @@ ul {
 .checkbox {
   margin-right: 20px;
   cursor: pointer;
+  width: 18px;
+  height: 18px;
 }
 
 .list-item {
@@ -92,6 +100,7 @@ ul {
   padding: 20px;
   position: relative;
   top: 100px;
+  display: none;
 }
 
 #drag-drop {
@@ -118,6 +127,7 @@ ul {
   justify-content: space-around;
   font-size: 14px;
   margin: 15px 0px;
+  opacity: 0.5;
 }
 
 #all-active-completed-container {
@@ -127,18 +137,29 @@ ul {
 
 #all:hover, #active:hover, #completed:hover, #clear-completed:hover {
   cursor: pointer;
-  color: slateblue;
+  color: hsl(220, 98%, 61%);
 }
 
 .blue-text {
-  color: slateblue;
+  color: hsl(220, 98%, 61%);
 }
 
 .attribution {
   position: relative;
   top: 100px;
+  color: white;
 }
 
 #light-mode-toggle {
   cursor: pointer;
+}
+
+.light-mode {
+  background-color: white;
+  color: #333;
+}
+
+.dark-mode {
+  background-color: hsl(235, 21%, 11%);
+  color: #fff
 }

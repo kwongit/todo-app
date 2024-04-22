@@ -167,6 +167,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   lightModeToggle?.addEventListener("click", () => {
     const desktopBanner = document.querySelector<HTMLImageElement>("#desktop-banner");
+    const body = document.body;
 
     if (desktopBanner) {
       const currentSrc = desktopBanner.getAttribute("src");
@@ -174,11 +175,21 @@ window.addEventListener("DOMContentLoaded", () => {
       const darkModeImageSrc = "../images/bg-desktop-dark.jpg";
 
       if (currentSrc === darkModeImageSrc) {
+        // switch to light mode
         desktopBanner.setAttribute("src", lightModeImageSrc);
         lightModeToggle.setAttribute("src", "../images/icon-moon.svg");
+
+        // Remove dark mode class and add light mode class to body
+        body.classList.remove("dark-mode");
+        body.classList.add("light-mode");
       } else {
+        // switch to dark mode
         desktopBanner.setAttribute("src", darkModeImageSrc);
         lightModeToggle.setAttribute("src", "../images/icon-sun.svg");
+
+        // Remove light mode class and add dark mode class to body
+        body.classList.remove("light-mode");
+        body.classList.add("dark-mode");
       }
     }
   });
