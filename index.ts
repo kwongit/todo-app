@@ -19,11 +19,11 @@ window.addEventListener("DOMContentLoaded", () => {
 
   // Define constants for class names and image sources
   const blueTextColorClass: string = "blue-text";
-  const deleteButtonImageSrc: string = "../images/icon-cross.svg";
-  const lightModeImageSrc: string = "../images/bg-desktop-light.jpg";
-  const darkModeImageSrc: string = "../images/bg-desktop-dark.jpg";
-  const lightModeIconSrc: string = "../images/icon-moon.svg";
-  const darkModeIconSrc: string = "../images/icon-sun.svg";
+  const deleteButtonImageSrc: string = "./images/icon-cross.svg";
+  const lightModeImageSrc: string = "./images/bg-desktop-light.jpg";
+  const darkModeImageSrc: string = "./images/bg-desktop-dark.jpg";
+  const lightModeIconSrc: string = "./images/icon-moon.svg";
+  const darkModeIconSrc: string = "./images/icon-sun.svg";
 
   // Function to create a new list item with given text
   function createNewListItem(text: string): HTMLLIElement {

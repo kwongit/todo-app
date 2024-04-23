@@ -13,11 +13,11 @@ window.addEventListener("DOMContentLoaded", () => {
     const clearCompletedFilter = getElement("#clear-completed");
     const lightModeToggle = getElement("#light-mode-toggle");
     const blueTextColorClass = "blue-text";
-    const deleteButtonImageSrc = "../images/icon-cross.svg";
-    const lightModeImageSrc = "../images/bg-desktop-light.jpg";
-    const darkModeImageSrc = "../images/bg-desktop-dark.jpg";
-    const lightModeIconSrc = "../images/icon-moon.svg";
-    const darkModeIconSrc = "../images/icon-sun.svg";
+    const deleteButtonImageSrc = "./images/icon-cross.svg";
+    const lightModeImageSrc = "./images/bg-desktop-light.jpg";
+    const darkModeImageSrc = "./images/bg-desktop-dark.jpg";
+    const lightModeIconSrc = "./images/icon-moon.svg";
+    const darkModeIconSrc = "./images/icon-sun.svg";
     function createNewListItem(text) {
         const newListItem = document.createElement("li");
         newListItem.className = "list-item";
