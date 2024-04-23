@@ -1,15 +1,23 @@
 "use strict";
 window.addEventListener("DOMContentLoaded", () => {
-    const list = document.querySelector("#unordered-list");
-    const inputField = document.querySelector(".input-item");
-    const statusContainer = document.querySelector(".status-container");
-    const itemsLeftContainer = document.querySelector("#items-left");
-    const allFilter = document.querySelector("#all");
-    const activeFilter = document.querySelector("#active");
-    const completedFilter = document.querySelector("#completed");
-    const clearCompletedFilter = document.querySelector("#clear-completed");
-    const lightModeToggle = document.querySelector("#light-mode-toggle");
+    function getElement(selector) {
+        return document.querySelector(selector);
+    }
+    const list = getElement("#unordered-list");
+    const inputField = getElement(".input-item");
+    const statusContainer = getElement(".status-container");
+    const itemsLeftContainer = getElement("#items-left");
+    const allFilter = getElement("#all");
+    const activeFilter = getElement("#active");
+    const completedFilter = getElement("#completed");
+    const clearCompletedFilter = getElement("#clear-completed");
+    const lightModeToggle = getElement("#light-mode-toggle");
     const blueTextColorClass = "blue-text";
+    const deleteButtonImageSrc = "../images/icon-cross.svg";
+    const lightModeImageSrc = "../images/bg-desktop-light.jpg";
+    const darkModeImageSrc = "../images/bg-desktop-dark.jpg";
+    const lightModeIconSrc = "../images/icon-moon.svg";
+    const darkModeIconSrc = "../images/icon-sun.svg";
     function createNewListItem(text) {
         const newListItem = document.createElement("li");
         newListItem.className = "list-item";
@@ -26,7 +34,7 @@ window.addEventListener("DOMContentLoaded", () => {
         label.innerText = text;
         const deleteButton = document.createElement("button");
         deleteButton.className = "delete-button";
-        deleteButton.style.backgroundImage = 'url("../images/icon-cross.svg")';
+        deleteButton.style.backgroundImage = `url(${deleteButtonImageSrc})`;
         deleteButton.style.display = "none";
         newListItem.addEventListener("mouseenter", () => {
             deleteButton.style.display = "inline-block";
@@ -50,16 +58,21 @@ window.addEventListener("DOMContentLoaded", () => {
         updateItemsLeftCount();
     }
     function clearInputField() {
-        inputField.value = "";
-        inputField.placeholder = "Create a new todo...";
-        inputField.setAttribute("style", "");
+        if (inputField) {
+            inputField.value = "";
+            inputField.placeholder = "Create a new todo...";
+            inputField.setAttribute("style", "");
+        }
     }
     function displayInputError() {
-        inputField.placeholder = "Please Enter Text";
-        inputField.setAttribute("style", "outline-color:red; border: 2px solid red");
+        if (inputField) {
+            inputField.placeholder = "Please Enter Text";
+            inputField.style.outlineColor = "red";
+            inputField.style.border = "2px solid red";
+        }
     }
     function handleInputSubmission() {
-        const trimmedValue = inputField.value.trim();
+        const trimmedValue = inputField === null || inputField === void 0 ? void 0 : inputField.value.trim();
         if (trimmedValue) {
             addListItem(trimmedValue);
             clearInputField();
@@ -68,7 +81,7 @@ window.addEventListener("DOMContentLoaded", () => {
             displayInputError();
         }
     }
-    inputField.addEventListener("keypress", (e) => {
+    inputField === null || inputField === void 0 ? void 0 : inputField.addEventListener("keypress", (e) => {
         if (e.key === "Enter") {
             handleInputSubmission();
         }
@@ -82,17 +95,19 @@ window.addEventListener("DOMContentLoaded", () => {
                 activeItemCount++;
             }
         });
-        itemsLeftContainer.innerText = `${activeItemCount} item${activeItemCount !== 1 ? "s" : ""} left`;
+        if (itemsLeftContainer) {
+            itemsLeftContainer.innerText = `${activeItemCount} item${activeItemCount !== 1 ? "s" : ""} left`;
+        }
     }
     updateItemsLeftCount();
     function removeBlueTextColorFromFilters() {
-        allFilter.classList.remove(blueTextColorClass);
-        activeFilter.classList.remove(blueTextColorClass);
-        completedFilter.classList.remove(blueTextColorClass);
+        allFilter === null || allFilter === void 0 ? void 0 : allFilter.classList.remove(blueTextColorClass);
+        activeFilter === null || activeFilter === void 0 ? void 0 : activeFilter.classList.remove(blueTextColorClass);
+        completedFilter === null || completedFilter === void 0 ? void 0 : completedFilter.classList.remove(blueTextColorClass);
     }
-    activeFilter.addEventListener("click", (e) => {
+    activeFilter === null || activeFilter === void 0 ? void 0 : activeFilter.addEventListener("click", (e) => {
         removeBlueTextColorFromFilters();
-        activeFilter.classList.add(blueTextColorClass);
+        activeFilter === null || activeFilter === void 0 ? void 0 : activeFilter.classList.add(blueTextColorClass);
         const listItems = list === null || list === void 0 ? void 0 : list.querySelectorAll("li");
         listItems === null || listItems === void 0 ? void 0 : listItems.forEach((item) => {
             const checkbox = item.querySelector(".checkbox");
@@ -104,9 +119,9 @@ window.addEventListener("DOMContentLoaded", () => {
             }
         });
     });
-    completedFilter.addEventListener("click", (e) => {
+    completedFilter === null || completedFilter === void 0 ? void 0 : completedFilter.addEventListener("click", (e) => {
         removeBlueTextColorFromFilters();
-        completedFilter.classList.add(blueTextColorClass);
+        completedFilter === null || completedFilter === void 0 ? void 0 : completedFilter.classList.add(blueTextColorClass);
         const listItems = list === null || list === void 0 ? void 0 : list.querySelectorAll("li");
         listItems === null || listItems === void 0 ? void 0 : listItems.forEach((item) => {
             const checkbox = item.querySelector(".checkbox");
@@ -118,15 +133,15 @@ window.addEventListener("DOMContentLoaded", () => {
             }
         });
     });
-    allFilter.addEventListener("click", (e) => {
+    allFilter === null || allFilter === void 0 ? void 0 : allFilter.addEventListener("click", (e) => {
         removeBlueTextColorFromFilters();
-        allFilter.classList.add(blueTextColorClass);
+        allFilter === null || allFilter === void 0 ? void 0 : allFilter.classList.add(blueTextColorClass);
         const listItems = list === null || list === void 0 ? void 0 : list.querySelectorAll("li");
         listItems === null || listItems === void 0 ? void 0 : listItems.forEach((item) => {
             item.style.display = "block";
         });
     });
-    clearCompletedFilter.addEventListener("click", (e) => {
+    clearCompletedFilter === null || clearCompletedFilter === void 0 ? void 0 : clearCompletedFilter.addEventListener("click", (e) => {
         removeBlueTextColorFromFilters();
         const listItems = list === null || list === void 0 ? void 0 : list.querySelectorAll("li");
         listItems === null || listItems === void 0 ? void 0 : listItems.forEach((item) => {
@@ -142,27 +157,25 @@ window.addEventListener("DOMContentLoaded", () => {
         const body = document.body;
         if (desktopBanner) {
             const currentSrc = desktopBanner.getAttribute("src");
-            const lightModeImageSrc = "../images/bg-desktop-light.jpg";
-            const darkModeImageSrc = "../images/bg-desktop-dark.jpg";
             if (currentSrc === darkModeImageSrc) {
                 desktopBanner.setAttribute("src", lightModeImageSrc);
-                lightModeToggle.setAttribute("src", "../images/icon-moon.svg");
+                lightModeToggle.setAttribute("src", lightModeIconSrc);
                 body.classList.remove("dark-mode");
                 body.classList.add("light-mode");
                 list === null || list === void 0 ? void 0 : list.classList.remove("dark-mode");
                 list === null || list === void 0 ? void 0 : list.classList.add("light-mode");
-                inputField.classList.remove("dark-mode");
-                inputField.classList.add("light-mode");
-                statusContainer.classList.remove("dark-mode");
-                statusContainer.classList.add("light-mode");
+                inputField === null || inputField === void 0 ? void 0 : inputField.classList.remove("dark-mode");
+                inputField === null || inputField === void 0 ? void 0 : inputField.classList.add("light-mode");
+                statusContainer === null || statusContainer === void 0 ? void 0 : statusContainer.classList.remove("dark-mode");
+                statusContainer === null || statusContainer === void 0 ? void 0 : statusContainer.classList.add("light-mode");
             }
             else {
                 desktopBanner.setAttribute("src", darkModeImageSrc);
-                lightModeToggle.setAttribute("src", "../images/icon-sun.svg");
+                lightModeToggle.setAttribute("src", darkModeIconSrc);
                 body.classList.remove("light-mode");
                 list === null || list === void 0 ? void 0 : list.classList.remove("light-mode");
-                inputField.classList.remove("light-mode");
-                statusContainer.classList.remove("light-mode");
+                inputField === null || inputField === void 0 ? void 0 : inputField.classList.remove("light-mode");
+                statusContainer === null || statusContainer === void 0 ? void 0 : statusContainer.classList.remove("light-mode");
             }
         }
     });
