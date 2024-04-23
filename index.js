@@ -143,7 +143,7 @@ window.addEventListener("DOMContentLoaded", () => {
         listItems === null || listItems === void 0 ? void 0 : listItems.forEach((item) => {
             const checkbox = item.querySelector(".checkbox");
             if (checkbox && !checkbox.checked) {
-                item.style.display = "block";
+                item.style.display = "flex";
             }
             else {
                 item.style.display = "none";
@@ -157,7 +157,7 @@ window.addEventListener("DOMContentLoaded", () => {
         listItems === null || listItems === void 0 ? void 0 : listItems.forEach((item) => {
             const checkbox = item.querySelector(".checkbox");
             if (checkbox && checkbox.checked) {
-                item.style.display = "block";
+                item.style.display = "flex";
             }
             else {
                 item.style.display = "none";
@@ -169,7 +169,7 @@ window.addEventListener("DOMContentLoaded", () => {
         allFilter === null || allFilter === void 0 ? void 0 : allFilter.classList.add(blueTextColorClass);
         const listItems = list === null || list === void 0 ? void 0 : list.querySelectorAll("li");
         listItems === null || listItems === void 0 ? void 0 : listItems.forEach((item) => {
-            item.style.display = "block";
+            item.style.display = "flex";
         });
     });
     clearCompletedFilter === null || clearCompletedFilter === void 0 ? void 0 : clearCompletedFilter.addEventListener("click", (e) => {
