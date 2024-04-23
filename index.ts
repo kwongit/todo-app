@@ -7,6 +7,7 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 
   // Get references to various elements using getElement function
+  const listContainer = getElement<HTMLElement>(".list-container")
   const list = getElement<HTMLOListElement>("#unordered-list");
   const inputField = getElement<HTMLInputElement>(".input-item");
   const statusContainer = getElement<HTMLElement>(".status-container");
@@ -263,25 +264,19 @@ window.addEventListener("DOMContentLoaded", () => {
         desktopBanner.setAttribute("src", lightModeImageSrc);
         lightModeToggle.setAttribute("src", lightModeIconSrc);
 
-        // Remove dark mode class and add light mode class to body and elements
-        body.classList.remove("dark-mode");
+        // Add light mode class to body and elements
         body.classList.add("light-mode");
-        list?.classList.remove("dark-mode");
-        list?.classList.add("light-mode");
-        inputField?.classList.remove("dark-mode");
         inputField?.classList.add("light-mode");
-        statusContainer?.classList.remove("dark-mode");
-        statusContainer?.classList.add("light-mode");
+        listContainer?.classList.add("light-mode")
       } else {
         // Switch to dark mode
         desktopBanner.setAttribute("src", darkModeImageSrc);
         lightModeToggle.setAttribute("src", darkModeIconSrc);
 
-        // Remove light mode class and add dark mode class to body and elements
+        // Remove light mode class from body and elements
         body.classList.remove("light-mode");
-        list?.classList.remove("light-mode");
         inputField?.classList.remove("light-mode");
-        statusContainer?.classList.remove("light-mode");
+        listContainer?.classList.remove("light-mode");
       }
     }
 

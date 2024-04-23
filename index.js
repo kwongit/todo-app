@@ -3,6 +3,7 @@ window.addEventListener("DOMContentLoaded", () => {
     function getElement(selector) {
         return document.querySelector(selector);
     }
+    const listContainer = getElement(".list-container");
     const list = getElement("#unordered-list");
     const inputField = getElement(".input-item");
     const statusContainer = getElement(".status-container");
@@ -192,22 +193,16 @@ window.addEventListener("DOMContentLoaded", () => {
             if (currentSrc === darkModeImageSrc) {
                 desktopBanner.setAttribute("src", lightModeImageSrc);
                 lightModeToggle.setAttribute("src", lightModeIconSrc);
-                body.classList.remove("dark-mode");
                 body.classList.add("light-mode");
-                list === null || list === void 0 ? void 0 : list.classList.remove("dark-mode");
-                list === null || list === void 0 ? void 0 : list.classList.add("light-mode");
-                inputField === null || inputField === void 0 ? void 0 : inputField.classList.remove("dark-mode");
                 inputField === null || inputField === void 0 ? void 0 : inputField.classList.add("light-mode");
-                statusContainer === null || statusContainer === void 0 ? void 0 : statusContainer.classList.remove("dark-mode");
-                statusContainer === null || statusContainer === void 0 ? void 0 : statusContainer.classList.add("light-mode");
+                listContainer === null || listContainer === void 0 ? void 0 : listContainer.classList.add("light-mode");
             }
             else {
                 desktopBanner.setAttribute("src", darkModeImageSrc);
                 lightModeToggle.setAttribute("src", darkModeIconSrc);
                 body.classList.remove("light-mode");
-                list === null || list === void 0 ? void 0 : list.classList.remove("light-mode");
                 inputField === null || inputField === void 0 ? void 0 : inputField.classList.remove("light-mode");
-                statusContainer === null || statusContainer === void 0 ? void 0 : statusContainer.classList.remove("light-mode");
+                listContainer === null || listContainer === void 0 ? void 0 : listContainer.classList.remove("light-mode");
             }
         }
         saveItemsToLocalStorage();
