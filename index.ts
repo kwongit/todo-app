@@ -30,8 +30,8 @@ window.addEventListener("DOMContentLoaded", () => {
     const savedItems = localStorage.getItem("todoItems");
     if (savedItems) {
       const todoItems = JSON.parse(savedItems);
-      todoItems.forEach((itemText: string) => {
-        addListItem(itemText);
+      todoItems.forEach((item: any) => {
+        addListItem(item.text, item.completed);
       });
     }
   }
@@ -42,7 +42,11 @@ window.addEventListener("DOMContentLoaded", () => {
     if (listItems) {
       const todoItems = Array.from(listItems).map((item) => {
         const label = item.querySelector("label");
-        return label?.innerText || "";
+        const checkbox = item.querySelector<HTMLInputElement>(".checkbox");
+        return {
+          text: label?.innerText || "",
+          completed: item.classList.contains("completed"),
+        };
       });
       localStorage.setItem("todoItems", JSON.stringify(todoItems));
     }
@@ -52,14 +56,19 @@ window.addEventListener("DOMContentLoaded", () => {
   loadItemsFromLocalStorage();
 
   // Function to create a new list item with given text
-  function createNewListItem(text: string): HTMLLIElement {
+  function createNewListItem(text: string, completed: boolean): HTMLLIElement {
     const newListItem = document.createElement("li");
     newListItem.className = "list-item";
+
+    if (completed) {
+      newListItem.classList.add("completed");
+    }
 
     // Create checkbox element
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
     checkbox.className = "checkbox";
+    checkbox.checked = completed;
 
     // Add change event listener to toggle 'completed' class and update items count
     checkbox.addEventListener("change", (e) => {
@@ -67,6 +76,7 @@ window.addEventListener("DOMContentLoaded", () => {
       const listItem = target.closest("li");
       listItem?.classList.toggle("completed", target.checked);
       updateItemsLeftCount();
+      saveItemsToLocalStorage()
     });
 
     // Create label element with text
@@ -104,8 +114,8 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 
   // Function to add a new list item with trimmed text to the list
-  function addListItem(text: string): void {
-    const newListItem = createNewListItem(text);
+  function addListItem(text: string, completed: boolean = false): void {
+    const newListItem = createNewListItem(text, completed);
     list?.appendChild(newListItem);
     updateItemsLeftCount();
     saveItemsToLocalStorage();

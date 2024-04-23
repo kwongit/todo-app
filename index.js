@@ -22,8 +22,8 @@ window.addEventListener("DOMContentLoaded", () => {
         const savedItems = localStorage.getItem("todoItems");
         if (savedItems) {
             const todoItems = JSON.parse(savedItems);
-            todoItems.forEach((itemText) => {
-                addListItem(itemText);
+            todoItems.forEach((item) => {
+                addListItem(item.text, item.completed);
             });
         }
     }
@@ -32,23 +32,32 @@ window.addEventListener("DOMContentLoaded", () => {
         if (listItems) {
             const todoItems = Array.from(listItems).map((item) => {
                 const label = item.querySelector("label");
-                return (label === null || label === void 0 ? void 0 : label.innerText) || "";
+                const checkbox = item.querySelector(".checkbox");
+                return {
+                    text: (label === null || label === void 0 ? void 0 : label.innerText) || "",
+                    completed: item.classList.contains("completed"),
+                };
             });
             localStorage.setItem("todoItems", JSON.stringify(todoItems));
         }
     }
     loadItemsFromLocalStorage();
-    function createNewListItem(text) {
+    function createNewListItem(text, completed) {
         const newListItem = document.createElement("li");
         newListItem.className = "list-item";
+        if (completed) {
+            newListItem.classList.add("completed");
+        }
         const checkbox = document.createElement("input");
         checkbox.type = "checkbox";
         checkbox.className = "checkbox";
+        checkbox.checked = completed;
         checkbox.addEventListener("change", (e) => {
             const target = e.target;
             const listItem = target.closest("li");
             listItem === null || listItem === void 0 ? void 0 : listItem.classList.toggle("completed", target.checked);
             updateItemsLeftCount();
+            saveItemsToLocalStorage();
         });
         const label = document.createElement("label");
         label.innerText = text;
@@ -72,8 +81,8 @@ window.addEventListener("DOMContentLoaded", () => {
         newListItem.appendChild(deleteButton);
         return newListItem;
     }
-    function addListItem(text) {
-        const newListItem = createNewListItem(text);
+    function addListItem(text, completed = false) {
+        const newListItem = createNewListItem(text, completed);
         list === null || list === void 0 ? void 0 : list.appendChild(newListItem);
         updateItemsLeftCount();
         saveItemsToLocalStorage();
