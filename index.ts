@@ -25,6 +25,32 @@ window.addEventListener("DOMContentLoaded", () => {
   const lightModeIconSrc: string = "./images/icon-moon.svg";
   const darkModeIconSrc: string = "./images/icon-sun.svg";
 
+  // Load items from local storage on page load
+  function loadItemsFromLocalStorage(): void {
+    const savedItems = localStorage.getItem("todoItems");
+    if (savedItems) {
+      const todoItems = JSON.parse(savedItems);
+      todoItems.forEach((itemText: string) => {
+        addListItem(itemText);
+      });
+    }
+  }
+
+  // Function to save todo items to local storage
+  function saveItemsToLocalStorage(): void {
+    const listItems = list?.querySelectorAll<HTMLLIElement>("li");
+    if (listItems) {
+      const todoItems = Array.from(listItems).map((item) => {
+        const label = item.querySelector("label");
+        return label?.innerText || "";
+      });
+      localStorage.setItem("todoItems", JSON.stringify(todoItems));
+    }
+  }
+
+  // Call loadItemsFromLocalStorage on page load
+  loadItemsFromLocalStorage();
+
   // Function to create a new list item with given text
   function createNewListItem(text: string): HTMLLIElement {
     const newListItem = document.createElement("li");
@@ -82,6 +108,7 @@ window.addEventListener("DOMContentLoaded", () => {
     const newListItem = createNewListItem(text);
     list?.appendChild(newListItem);
     updateItemsLeftCount();
+    saveItemsToLocalStorage();
   }
 
   // Function to clear input field value and reset placeholder
@@ -137,6 +164,7 @@ window.addEventListener("DOMContentLoaded", () => {
       itemsLeftContainer.innerText = `${activeItemCount} item${activeItemCount !== 1 ? "s" : ""} left`
     }
 
+    saveItemsToLocalStorage();
   }
 
   // Initial call to update items count on load
@@ -208,6 +236,8 @@ window.addEventListener("DOMContentLoaded", () => {
         updateItemsLeftCount();
       }
     });
+
+    saveItemsToLocalStorage();
   });
 
   // Add click event listener to light mode toggle button to switch between light/dark mode
@@ -217,7 +247,6 @@ window.addEventListener("DOMContentLoaded", () => {
 
     if (desktopBanner) {
       const currentSrc = desktopBanner.getAttribute("src");
-
 
       if (currentSrc === darkModeImageSrc) {
         // Switch to light mode
@@ -245,5 +274,7 @@ window.addEventListener("DOMContentLoaded", () => {
         statusContainer?.classList.remove("light-mode");
       }
     }
+
+    saveItemsToLocalStorage();
   });
 });

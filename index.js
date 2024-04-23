@@ -18,6 +18,26 @@ window.addEventListener("DOMContentLoaded", () => {
     const darkModeImageSrc = "./images/bg-desktop-dark.jpg";
     const lightModeIconSrc = "./images/icon-moon.svg";
     const darkModeIconSrc = "./images/icon-sun.svg";
+    function loadItemsFromLocalStorage() {
+        const savedItems = localStorage.getItem("todoItems");
+        if (savedItems) {
+            const todoItems = JSON.parse(savedItems);
+            todoItems.forEach((itemText) => {
+                addListItem(itemText);
+            });
+        }
+    }
+    function saveItemsToLocalStorage() {
+        const listItems = list === null || list === void 0 ? void 0 : list.querySelectorAll("li");
+        if (listItems) {
+            const todoItems = Array.from(listItems).map((item) => {
+                const label = item.querySelector("label");
+                return (label === null || label === void 0 ? void 0 : label.innerText) || "";
+            });
+            localStorage.setItem("todoItems", JSON.stringify(todoItems));
+        }
+    }
+    loadItemsFromLocalStorage();
     function createNewListItem(text) {
         const newListItem = document.createElement("li");
         newListItem.className = "list-item";
@@ -56,6 +76,7 @@ window.addEventListener("DOMContentLoaded", () => {
         const newListItem = createNewListItem(text);
         list === null || list === void 0 ? void 0 : list.appendChild(newListItem);
         updateItemsLeftCount();
+        saveItemsToLocalStorage();
     }
     function clearInputField() {
         if (inputField) {
@@ -98,6 +119,7 @@ window.addEventListener("DOMContentLoaded", () => {
         if (itemsLeftContainer) {
             itemsLeftContainer.innerText = `${activeItemCount} item${activeItemCount !== 1 ? "s" : ""} left`;
         }
+        saveItemsToLocalStorage();
     }
     updateItemsLeftCount();
     function removeBlueTextColorFromFilters() {
@@ -151,6 +173,7 @@ window.addEventListener("DOMContentLoaded", () => {
                 updateItemsLeftCount();
             }
         });
+        saveItemsToLocalStorage();
     });
     lightModeToggle === null || lightModeToggle === void 0 ? void 0 : lightModeToggle.addEventListener("click", () => {
         const desktopBanner = document.querySelector("#desktop-banner");
@@ -178,5 +201,6 @@ window.addEventListener("DOMContentLoaded", () => {
                 statusContainer === null || statusContainer === void 0 ? void 0 : statusContainer.classList.remove("light-mode");
             }
         }
+        saveItemsToLocalStorage();
     });
 });
